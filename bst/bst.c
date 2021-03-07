@@ -141,7 +141,7 @@ bst_item* bst_get(bst *t, bst_item item) {
         return NULL;
 }
 
-void bst_put(bst *t, bst_item item) {
+void bst_insert(bst *t, bst_item item) {
     t->root = bst_putn(t->root, t->compare, item);
     t->size++;
 }
@@ -171,7 +171,7 @@ void bst_rem(bst* t, bst_item item) {
     t->size--;
 }
 
-void bst_del(bst* t) {
+void bst_destroy(bst* t) {
     bst_deln(t->root);
 }
 

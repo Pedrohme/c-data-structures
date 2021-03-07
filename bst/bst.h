@@ -46,7 +46,7 @@ bst_item* bst_get(bst *t, bst_item item);
     @param t adress of the tree allocated by the user
     @param item item to be inserted in the tree
 */
-void bst_put(bst *t, bst_item item);
+void bst_insert(bst *t, bst_item item);
 
 /*! Searches for the item of maximum value in the tree
     @param t adress of the tree allocated by the user
@@ -74,7 +74,7 @@ void bst_rem(bst* t, bst_item item);
 /*! Deletes the tree and frees allocated memory. This function must be callet before closing the program.
     @param t adress of the tree allocated by the user
 */
-void bst_del(bst* t);
+void bst_destroy(bst* t);
 
 
 /* tree traversal functions
