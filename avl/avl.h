@@ -51,7 +51,7 @@ void avl_insert( avl* t, avl_item data );
 	@param data_ceil this pointer will be assigned the ceiling, if found
     @return 1 if the ceiling exists, 0 if it doesn`t
 */
-int avl_ceil( avl* t, avl_item data, avl_item *data_ceil ); // Se o teto existir, retorna 1 e em data_ceil o teto de data. Caso contrário, retorna 0 (falso).
+int avl_ceil( avl* t, avl_item data, avl_item *data_ceil );
 
 /*! Searches for the floor of the passed value in the tree
     @param t adress of the tree allocated by the user
@@ -59,6 +59,6 @@ int avl_ceil( avl* t, avl_item data, avl_item *data_ceil ); // Se o teto existir
 	@param data_floor this pointer will be assigned the floor, if found
     @return 1 if the floor exists, 0 if it doesn`t
 */
-int avl_floor( avl* t, avl_item data, avl_item *data_floor ); // Se o piso existir, retorna 1 e em data_floor o piso de data. Caso contrário, retorna 0 (falso).
+int avl_floor( avl* t, avl_item data, avl_item *data_floor );
 
 #endif
