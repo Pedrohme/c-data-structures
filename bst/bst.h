@@ -1,3 +1,5 @@
+/* BINARY SEARCH TREE */
+
 #ifndef BST_H
 #define BST_H
 

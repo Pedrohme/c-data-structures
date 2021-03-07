@@ -1,3 +1,5 @@
+/* AVL TREE (self-balancing binary search tree) */
+
 #ifndef AVL_H
 #define AVL_H
 
