@@ -76,4 +76,32 @@ void bst_rem(bst* t, bst_item item);
 */
 void bst_del(bst* t);
 
+
+/* tree traversal functions
+    example processing function:
+
+    void print(int item) {
+	    printf(" %d", item);
+    }
+
+*/
+
+/*! Performs the Post-order traversal of the tree
+    @param t adress of the tree allocated by the user
+    @param process processing function to be used
+*/
+void bst_post_order(bst *t, void (*process)(bst_item item));
+
+/*! Performs the Pre-order traversal of the tree
+    @param t adress of the tree allocated by the user
+    @param process processing function to be used
+*/
+void bst_pre_order(bst *t, void (*process)(bst_item item));
+
+/*! Performs the In-order traversal of the tree
+    @param t adress of the tree allocated by the user
+    @param process processing function to be used
+*/
+void bst_in_order(bst *t, void (*process)(bst_item item));
+
 #endif

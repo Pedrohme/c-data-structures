@@ -174,3 +174,51 @@ void bst_rem(bst* t, bst_item item) {
 void bst_del(bst* t) {
     bst_deln(t->root);
 }
+
+//realiza o processamento do nó atual depois do processamento de suas subarvores
+void bst_post_ordern( bst_n *p, void (*process)(bst_item item) ) {
+    if(p) {
+		bst_post_ordern(p->l, process);
+		
+		bst_post_ordern(p->r, process);
+
+		process(p->item);
+	}
+	return;
+}
+
+//realiza o processamento do nó atual antes do processamento de suas subarvores
+void bst_pre_ordern( bst_n *p, void (*process)(bst_item item) ) {
+    if(p) {
+		process(p->item);
+
+		bst_pre_ordern(p->l, process);
+		
+		bst_pre_ordern(p->r, process);
+	}
+	return;
+}
+
+//processa as subárvores à esquerda do nó, então processa o nó e depois as subárvores à direita
+void bst_in_ordern( bst_n *p, void (*process)(bst_item item) ) {
+	if(p) {
+		bst_in_ordern(p->l, process);
+
+		process(p->item);
+
+		bst_in_ordern(p->r, process);
+	}
+	return;
+}
+
+void bst_post_order(bst *t, void (*process)(bst_item item)) {
+    bst_post_ordern(t->root, process);
+}
+
+void bst_pre_order(bst *t, void (*process)(bst_item item)) {
+    bst_pre_ordern(t->root, process);
+}
+
+void bst_in_order(bst *t, void (*process)(bst_item item)) {
+    bst_in_ordern(t->root, process);
+}
