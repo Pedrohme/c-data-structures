@@ -29,13 +29,13 @@ bst_n* bst_getn(bst_n* root, int (*comp)( bst_item i1, bst_item i2), bst_item it
     return NULL;
 }
 
-bst_n* bst_putn(bst_n* root, int (*comp)( bst_item i1, bst_item i2), bst_item item) {
+bst_n* bst_insertn(bst_n* root, int (*comp)( bst_item i1, bst_item i2), bst_item item) {
     if(root) {
         int cmp = comp(root->item, item);
         if(cmp > 0)
-            root->l = bst_putn(root->l, comp, item);
+            root->l = bst_insertn(root->l, comp, item);
         else if (cmp < 0)
-            root->r = bst_putn(root->r, comp, item);
+            root->r = bst_insertn(root->r, comp, item);
         return root;
     } 
     else {
@@ -119,10 +119,10 @@ bst_n* bst_remn(bst_n* root, int (*comp)( bst_item i1, bst_item i2), bst_item it
     return root;
 }
 
-void bst_deln(bst_n* root) {
+void bst_destroyn(bst_n* root) {
     if(root) {
-        bst_deln(root->l);
-        bst_deln(root->r);
+        bst_destroyn(root->l);
+        bst_destroyn(root->r);
         free(root);
     }
 }
@@ -142,7 +142,7 @@ bst_item* bst_get(bst *t, bst_item item) {
 }
 
 void bst_insert(bst *t, bst_item item) {
-    t->root = bst_putn(t->root, t->compare, item);
+    t->root = bst_insertn(t->root, t->compare, item);
     t->size++;
 }
 
@@ -172,7 +172,7 @@ void bst_rem(bst* t, bst_item item) {
 }
 
 void bst_destroy(bst* t) {
-    bst_deln(t->root);
+    bst_destroyn(t->root);
 }
 
 //realiza o processamento do nó atual depois do processamento de suas subarvores
