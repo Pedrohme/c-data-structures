@@ -129,7 +129,7 @@ void bst_deln(bst_n* root) {
 
 void bst_initialize(bst *t, int (*comp)(bst_item i1, bst_item i2)) {
     t->compare = comp;
-    t->quantidade = 0;
+    t->size = 0;
     t->root = NULL;
 }
 
@@ -143,7 +143,7 @@ bst_item* bst_get(bst *t, bst_item item) {
 
 void bst_put(bst *t, bst_item item) {
     t->root = bst_putn(t->root, t->compare, item);
-    t->quantidade++;
+    t->size++;
 }
 
 bst_item* bst_max(bst* t) {
@@ -162,9 +162,13 @@ bst_item* bst_min(bst* t) {
         return NULL;
 }
 
+int bst_size(bst* t) {
+    return t->size;
+}
+
 void bst_rem(bst* t, bst_item item) {    
     t->root = bst_remn(t->root, t->compare, item);
-    t->quantidade--;
+    t->size--;
 }
 
 void bst_del(bst* t) {

@@ -1,7 +1,7 @@
 #ifndef BST_H
 #define BST_H
 
-//tipo de dado armazenado na arvore
+//Data type stored in the tree
 typedef int bst_item;
 
 typedef struct bst_nodes {
@@ -12,11 +12,11 @@ typedef struct bst_nodes {
 
 typedef struct bst_struct {
     bst_n *root;
-    int quantidade;
-    int (*compare)( bst_item i1, bst_item i2); //função de comparação
+    int size;
+    int (*compare)( bst_item i1, bst_item i2); //comparison function
 } bst;
 
-/* ex função de comparação :
+/* example comparison function:
 int cmp(int a, int b) {
     if (a < b)
         return -1;
@@ -27,45 +27,50 @@ int cmp(int a, int b) {
 }
 */
 
-/*! Função para inicializar uma arvore binaria de busca. É obrigatório chamar esta função antes do início da utilização da arvore.
-    @param t endereço da arvore alocada pelo usuario
-    @param comp função de comparação a ser utilizada pela árvore
+/*! Initialization function for the Binary Search Tree. This function must be called before using the tree.
+    @param t adress of the tree allocated by the user
+    @param comp comparison function to be used in the tree
 */
 void bst_initialize(bst *t, int (*comp)(bst_item i1, bst_item i2));
 
-/*! Busca o item passado na árvore
-    @param t endereço da fila alocada pelo usuário
-    @param item item a ser buscado
-    @return endereço do item buscado caso encontrado. Caso não encontrado, retorna NULL
+/*! Searches for the passed item in the tree
+    @param t adress of the tree allocated by the user
+    @param item item to be searched for
+    @return the item's adress if found. If the item isn't n the tree, returns a NULL pointer
 */
 bst_item* bst_get(bst *t, bst_item item);
 
-/*! Insere um item na árvore. Itens repetidos não serão inseridos.
-    @param t endereço da fila alocada pelo usuário
-    @param item item a ser inserido
+/*! Inserts an item in the tree. If the item is already in the tree, does nothing.
+    @param t adress of the tree allocated by the user
+    @param item item to be inserted in the tree
 */
 void bst_put(bst *t, bst_item item);
 
-/*! Busca o item de maior valor na árvore
-    @param t endereço da fila alocada pelo usuário
-    @return endereço do item. Caso a árvore esteja vazia, retorna NULL
+/*! Searches for the item of maximum value in the tree
+    @param t adress of the tree allocated by the user
+    @return the item`s adress. If the tree is empty, returns a NULL pointer
 */
 bst_item* bst_max(bst* t);
 
-/*! Busca o item de menor valor na árvore
-    @param t endereço da fila alocada pelo usuário
-    @return endereço do item. Caso a árvore esteja vazia, retorna NULL
+/*! Searches for the item of minimum value in the tree
+    @param t adress of the tree allocated by the user
+    @return the item`s adress. If the tree is empty, returns a NULL pointer
 */
 bst_item* bst_min(bst* t);
 
-/*! Remove um item da árvore. Itens repetidos não serão inseridos.
-    @param t endereço da fila alocada pelo usuário
-    @param item item a ser removido
+/*! Size function
+    @return number of items stores in the tree
+*/
+int bst_size(bst* t);
+
+/*! Removes an item from the tree. If the item isn`t in the tree, does nothing.
+    @param t adress of the tree allocated by the user
+    @param item item to be removed
 */
 void bst_rem(bst* t, bst_item item);
 
-/*! Apaga a árvore e libera a memória alocada. Essa função deve sempre ser chamada antes de finalizar o programa.
-    @param t endereço da fila alocada pelo usuário
+/*! Deletes the tree and frees allocated memory. This function must be callet before closing the program.
+    @param t adress of the tree allocated by the user
 */
 void bst_del(bst* t);
 
