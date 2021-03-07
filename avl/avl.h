@@ -4,13 +4,13 @@
 typedef int avl_item;
 
 typedef struct node_ {
-	int data;
-	char bal; //we only need 2 bits
-	struct node_ *right, *left;
+    int data;
+    char bal; //we only need 2 bits
+    struct node_ *right, *left;
 } avl_n;
 
 typedef struct {
-	avl_n *root;
+    avl_n *root;
     int size;
     int (*cmp)( avl_item i1, avl_item i2); //comparison function
 } avl;
@@ -47,16 +47,16 @@ void avl_insert( avl* t, avl_item data );
 
 /*! Searches for the ceiling of the passed value in the tree
     @param t adress of the tree allocated by the user
-	@param data item to find the ceiling of
-	@param data_ceil this pointer will be assigned the ceiling, if found
+    @param data item to find the ceiling of
+    @param data_ceil this pointer will be assigned the ceiling, if found
     @return 1 if the ceiling exists, 0 if it doesn`t
 */
 int avl_ceil( avl* t, avl_item data, avl_item *data_ceil );
 
 /*! Searches for the floor of the passed value in the tree
     @param t adress of the tree allocated by the user
-	@param data item to find the floor of
-	@param data_floor this pointer will be assigned the floor, if found
+    @param data item to find the floor of
+    @param data_floor this pointer will be assigned the floor, if found
     @return 1 if the floor exists, 0 if it doesn`t
 */
 int avl_floor( avl* t, avl_item data, avl_item *data_floor );

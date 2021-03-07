@@ -2,7 +2,7 @@
 #include "avl.h"
 
 void avl_initialize(avl* t, int (*cmp)( avl_item i1, avl_item i2)) {
-	t->root = 0;
+    t->root = 0;
     t->cmp = cmp;
     t->size = 0;
 }
@@ -90,19 +90,19 @@ avl_n* avl_rotRL(avl_n* A) {
 }
 
 avl_n* avl_private_insert(avl_n* p, avl_item data, int *heightChanged, int (*cmp)( avl_item i1, avl_item i2)) {
-	
-	if(!p) {
-		avl_n* new = (avl_n*)malloc(sizeof(avl_n));
-		new->data = data;
-		new->bal = 0;
-		new->right = new->left = 0;
-		*heightChanged = 1;
-		return new;
-	}
+    
+    if(!p) {
+        avl_n* new = (avl_n*)malloc(sizeof(avl_n));
+        new->data = data;
+        new->bal = 0;
+        new->right = new->left = 0;
+        *heightChanged = 1;
+        return new;
+    }
 
     //esquerda
     else if (cmp(data, p->data) < 0) {
-		p->left = avl_private_insert(p->left, data, heightChanged, cmp);
+        p->left = avl_private_insert(p->left, data, heightChanged, cmp);
         if (*heightChanged && p->bal == -1) { //caso de possivel desbalanceamento
             if (p->left->bal == -1) { //EE
                 *heightChanged = 0;
@@ -120,10 +120,10 @@ avl_n* avl_private_insert(avl_n* p, avl_item data, int *heightChanged, int (*cmp
             *heightChanged = 0;
             p->bal--;
         }
-	}
+    }
     //direita
-	else if (cmp(data, p->data) > 0) {
-		p->right = avl_private_insert(p->right, data, heightChanged, cmp);
+    else if (cmp(data, p->data) > 0) {
+        p->right = avl_private_insert(p->right, data, heightChanged, cmp);
         if (*heightChanged && p->bal == 1) { //caso de possivel desbalanceamento
             if (p->right->bal == 1) { //DD
                 *heightChanged = 0;
@@ -141,16 +141,16 @@ avl_n* avl_private_insert(avl_n* p, avl_item data, int *heightChanged, int (*cmp
             *heightChanged = 0;
             p->bal++;
         }
-	}
-	return p;
+    }
+    return p;
 }
 
 void avl_insert(avl* t, avl_item data) {
-	
-	int heightChanged = 0;
-	
-	t->root = avl_private_insert( t->root, data, &heightChanged, t->cmp );
-	
+    
+    int heightChanged = 0;
+    
+    t->root = avl_private_insert( t->root, data, &heightChanged, t->cmp );
+    
 }
     
 avl_n* avl_private_ceil(avl_n* p, avl_item data, int (*cmp)( avl_item i1, avl_item i2)) {
