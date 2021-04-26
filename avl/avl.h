@@ -3,10 +3,11 @@
 #ifndef AVL_H
 #define AVL_H
 
+//Data type stored in the tree
 typedef int avl_item;
 
 typedef struct node_ {
-    int data;
+    avl_item data;
     char bal; //we only need 2 bits
     struct node_ *right, *left;
 } avl_n;
